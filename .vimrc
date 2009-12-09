@@ -1,3 +1,6 @@
+" vimrc
+" Zhiqiang Ma, eric.zq.ma [at] gmail.com
+" 
 
 set number              " show line number
 

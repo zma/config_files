@@ -1,0 +1,72 @@
+<?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+ <!--
+    Begin user preferred fonts config:
+    Created by: Eric Z. Q. Ma eric.zq.ma@gmail.com
+-->
+ <!--
+  Purpose:
+    1. use the dejavu fonts for non-CJK characters
+    2. use uming fonts for Chinese characters
+
+  Preferred fonts:
+    dejavu-fonts
+    cjkunifonts-uming
+-->
+ <!--
+  Serif faces
+ -->
+ <alias>
+  <family>serif</family>
+  <prefer>
+   <family>DejaVu Serif</family>
+<!--   <family>AR PL UKai CN</family> -->
+   <family>AR PL UMing CN</family>
+  </prefer>
+ </alias>
+ <!--
+  Sans-serif faces
+ -->
+ <alias>
+  <family>sans-serif</family>
+  <prefer>
+   <family>DejaVu Sans</family>
+   <family>AR PL UMing CN</family>
+  </prefer>
+ </alias>
+ <!--
+  Monospace faces
+ -->
+ <alias>
+  <family>monospace</family>
+  <prefer>
+   <family>DejaVu Sans Mono</family>
+   <family>Bitstream Vera Sans Mono</family>
+   <family>AR PL UMing CN</family>
+  </prefer>
+ </alias>
+ <!--
+    End user preferred fonts config.
+-->
+ <match target="font" >
+  <edit mode="assign" name="rgba" >
+   <const>rgb</const>
+  </edit>
+ </match>
+ <match target="font" >
+  <edit mode="assign" name="hinting" >
+   <bool>true</bool>
+  </edit>
+ </match>
+ <match target="font" >
+  <edit mode="assign" name="hintstyle" >
+   <const>hintmedium</const>
+  </edit>
+ </match>
+ <match target="font" >
+  <edit mode="assign" name="antialias" >
+   <bool>true</bool>
+  </edit>
+ </match>
+</fontconfig>

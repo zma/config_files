@@ -1,0 +1,10 @@
+debug 3
+# set ftp:charset GBK
+set file:charset UTF-8
+set net:connection-limit 1 
+set net:timeout 120
+set net:reconnect-interval-base 12
+set net:reconnect-interval-multiplier 1
+
+set ftp:ssl-allow false
+

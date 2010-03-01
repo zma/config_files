@@ -8,12 +8,12 @@ set backup              " keep a backup file
 set backupdir=~/.vibackup " keep all backup files in one central dir
 set backupcopy=yes
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 set autoindent          " always set autoindenting on
-set cindent             " indent c code
+set nocindent           " no indent c code
 syntax on
 
 set incsearch           " do incremental searching

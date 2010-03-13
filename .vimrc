@@ -8,8 +8,8 @@ set backup              " keep a backup file
 set backupdir=~/.vibackup " keep all backup files in one central dir
 set backupcopy=yes
 
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set expandtab
 
 set autoindent          " always set autoindenting on

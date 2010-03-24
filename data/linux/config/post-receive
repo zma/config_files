@@ -651,7 +651,7 @@ RANDOM=$$
 random_no=$RANDOM
 email_tmp_file="/tmp/git-email-$random_no"
 emailsubject_tmp_file="/tmp/git-email-subject-$random_no"
-while [ -f $email_tmp_file || -f $emailsubject_tmp_file ]
+while [ -f $email_tmp_file ]
 do
     random_no=$RANDOM
     email_tmp_file="/tmp/git-email-$random_no"

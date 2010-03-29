@@ -13,7 +13,7 @@ set shiftwidth=4
 set expandtab
 
 set autoindent          " always set autoindenting on
-set nocindent           " no indent c code
+set cindent             " indent c code
 syntax on
 
 set incsearch           " do incremental searching

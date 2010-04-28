@@ -25,5 +25,5 @@ set showcmd             " display incomplete commands
 
 set fileencodings=utf-8,gbk,ucs-bom,latin1  " good for Chinese charactor
 
-set mouse=a             " move cursor by mouse click
+" set mouse=a             " move cursor by mouse click
 

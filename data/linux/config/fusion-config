@@ -11,7 +11,7 @@ as_initiate_all_edge = TopRight
 as_initiate_all_key = <Alt>Up
 
 [core]
-as_active_plugins = core;decoration;mousepoll;place;png;vpswitch;resize;regex;dbus;thumbnail;glib;svg;video;wall;gnomecompat;expo;fade;scale;staticswitcher;move;
+as_active_plugins = core;decoration;mousepoll;place;png;vpswitch;resize;regex;dbus;text;thumbnail;glib;svg;video;wall;gnomecompat;imgjpeg;expo;fade;scale;staticswitcher;move;
 
 [vpswitch]
 as_switch_to_1_key = <Control>F1

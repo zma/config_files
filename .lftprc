@@ -7,9 +7,9 @@ set file:charset UTF-8
 # only 1 concurrent connection to one site 
 set net:connection-limit 1
 # net work protocal timeout
-set net:timeout 120
+set net:timeout 10
 # base interval time between reconnects
-set net:reconnect-interval-base 12
+set net:reconnect-interval-base 6
 # by which the interval-base is multiplied 
 set net:reconnect-interval-multiplier 1
 

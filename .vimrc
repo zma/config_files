@@ -12,8 +12,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-set noautoindent          " always set autoindenting on
-set nocindent             " indent c code
+set autoindent          " always set autoindenting on
+set nocindent           " indent c code
 syntax on
 
 set incsearch           " do incremental searching

@@ -19,8 +19,8 @@ set nocompatible
 set textwidth=80
 set wrap
 
-set autoindent          " always set autoindenting on
-set cindent             " indent c code
+"set autoindent          " always set autoindenting on
+"set cindent             " indent c code
 
 syntax on
 
@@ -44,15 +44,8 @@ set autoread
 " =============
 " Key Shortcut
 " =============
-nmap <C-t> :tabnew<CR>
+"nmap <C-t> :tabnew<CR>
 nmap <C-p> :tabprevious<CR>
 nmap <C-n> :tabnext<CR>
 nmap <C-k> :tabclose<CR>
-nmap <C-Tab> :tabnext<CR>
-  
-  
-  
-  
-  
-  
-  
+"nmap <C-Tab> :tabnext<CR>

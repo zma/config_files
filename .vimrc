@@ -1,5 +1,5 @@
 " vimrc
-" Zhiqiang Ma, eric.zq.ma [at] gmail.com
+" Zhiqiang Ma, eric [at] pkill.com
 " 
 
 set number              " show line number
@@ -14,13 +14,13 @@ set expandtab
 set smarttab
 set softtabstop=4
 
-set linebreak
+"set linebreak
 set nocompatible
-set textwidth=80
-set wrap
+"set textwidth=80
+"set wrap
 
-"set autoindent          " always set autoindenting on
-"set cindent             " indent c code
+set autoindent          " always set autoindenting on
+set cindent             " indent c code
 
 syntax on
 
@@ -49,3 +49,20 @@ nmap <C-p> :tabprevious<CR>
 nmap <C-n> :tabnext<CR>
 nmap <C-k> :tabclose<CR>
 "nmap <C-Tab> :tabnext<CR>
+
+setlocal spell spelllang=en
+
+au FileType mail call FT_mail()
+
+function FT_mail()
+    set nocindent
+    set noautoindent
+    set textwidth=72
+    " reformat for 72 char lines
+    " normal gggqGgg
+    " settings
+    setlocal spell spelllang=en
+    setlocal fileencoding=iso8859-1
+    " abbreviations
+    iabbr <buffer> gd Good Day!
+endfunction

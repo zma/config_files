@@ -17,10 +17,10 @@
 (set-background-color "gray14")
 
 ;; No scroll bar
-(scroll-bar-mode nil)
+;; (scroll-bar-mode nil)
 
 ;; No tool bar
-(tool-bar-mode nil)
+;; (tool-bar-mode nil)
 
 ;; No menu bar
 (menu-bar-mode nil)

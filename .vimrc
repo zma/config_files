@@ -1,6 +1,5 @@
 " vimrc
-" Zhiqiang Ma, eric [at] pkill.com
-" 
+" Zhiqiang Ma, eric [at] pkill.info
 
 set number              " show line number
 
@@ -14,20 +13,20 @@ set expandtab
 set smarttab
 set softtabstop=4
 
-"set linebreak
+" set linebreak
 set nocompatible
 "set textwidth=80
-"set wrap
+set wrap
 
-set autoindent          " always set autoindenting on
-set cindent             " indent c code
+"set autoindent          " always set autoindenting on
+"set cindent             " indent c code
 
 syntax on
 
 set incsearch           " do incremental searching
 set hlsearch            " high light the search content
 
-set history=50          " keep 50 lines of command line history
+set history=500         " keep 50 lines of command line history
 
 set number
 set ruler               " show the cursor position all the time
@@ -49,20 +48,33 @@ nmap <C-p> :tabprevious<CR>
 nmap <C-n> :tabnext<CR>
 nmap <C-k> :tabclose<CR>
 "nmap <C-Tab> :tabnext<CR>
+nmap W :w<CR>
 
-setlocal spell spelllang=en
+" setlocal spell spelllang=en
 
 au FileType mail call FT_mail()
 
 function FT_mail()
-    set nocindent
-    set noautoindent
+    set textwidth=68
+    " reformat for 72 char lines
+    " normal gggqGgg
+    " settings
+    setlocal spell spelllang=en
+    " setlocal fileencoding=iso8859-1,utf-8
+    set fileencodings=iso8859-1,utf-8
+    " abbreviations
+    iabbr <buffer> gd Good Day!
+endfunction
+
+au FileType tex call FT_tex()
+
+function FT_tex()
     set textwidth=72
     " reformat for 72 char lines
     " normal gggqGgg
     " settings
     setlocal spell spelllang=en
-    setlocal fileencoding=iso8859-1
-    " abbreviations
-    iabbr <buffer> gd Good Day!
+    " setlocal fileencoding=iso8859-1,utf-8
+    set fileencodings=iso8859-1,utf-8
 endfunction
+

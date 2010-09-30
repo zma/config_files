@@ -50,9 +50,11 @@ nmap <C-k> :tabclose<CR>
 "nmap <C-Tab> :tabnext<CR>
 nmap W :w<CR>
 
-" setlocal spell spelllang=en
+setlocal spell spelllang=en
 
 au FileType mail call FT_mail()
+au FileType cpp,c,java,sh,pl,php,asp call FT_c()
+au FileType tex call FT_tex()
 
 function FT_mail()
     set textwidth=68
@@ -66,8 +68,6 @@ function FT_mail()
     iabbr <buffer> gd Good Day!
 endfunction
 
-au FileType tex call FT_tex()
-
 function FT_tex()
     set textwidth=72
     " reformat for 72 char lines
@@ -76,5 +76,13 @@ function FT_tex()
     setlocal spell spelllang=en
     " setlocal fileencoding=iso8859-1,utf-8
     set fileencodings=iso8859-1,utf-8
+endfunction
+
+function FT_c()
+    set textwidth=72
+    set nowrap
+    set autoindent          " always set autoindenting on
+    set cindent             " indent c code
+    setlocal nospell
 endfunction
 

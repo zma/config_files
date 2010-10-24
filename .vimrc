@@ -43,14 +43,11 @@ set autoread
 " =============
 " Key Shortcut
 " =============
-"nmap <C-t> :tabnew<CR>
-nmap <C-p> :tabprevious<CR>
-nmap <C-n> :tabnext<CR>
-nmap <C-k> :tabclose<CR>
-"nmap <C-Tab> :tabnext<CR>
+nmap <C-h> :tabprevious<CR>
+nmap <C-l> :tabnext<CR>
 nmap W :w<CR>
 
-setlocal spell spelllang=en
+" setlocal spell spelllang=en
 
 au FileType mail call FT_mail()
 au FileType cpp,c,java,sh,pl,php,asp call FT_c()

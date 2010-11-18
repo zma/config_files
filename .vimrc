@@ -49,6 +49,13 @@ nmap W :w<CR>
 
 " setlocal spell spelllang=en
 
+au BufEnter *.cpp setf cpp
+au BufEnter *.c++ setf cpp
+au BufEnter *.cc setf cpp
+au BufEnter *.h setf cpp
+au BufEnter *.c setf c
+au BufEnter *.tex setf tex
+
 au FileType mail call FT_mail()
 au FileType cpp,c,java,sh,pl,php,asp call FT_c()
 au FileType tex call FT_tex()
@@ -82,4 +89,5 @@ function FT_c()
     set cindent             " indent c code
     setlocal nospell
 endfunction
+
 

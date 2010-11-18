@@ -1,5 +1,5 @@
 " vimrc
-" Zhiqiang Ma, eric [at] pkill.info
+" Zhiqiang Ma, http://fclose.com/zma/
 
 set number              " show line number
 

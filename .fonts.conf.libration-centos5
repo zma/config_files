@@ -1,0 +1,81 @@
+<?xml version='1.0'?>
+<!DOCTYPE fontconfig SYSTEM 'fonts.dtd'>
+<fontconfig>
+ <!--
+ Begin user preferred fonts config for CentOS/RHEL 5:
+ Created by: Zhiqiang Ma (Eric) zma [at] fclose.com
+ About usage of this config file: http://fclose.com/b/298/
+ -->
+ <!--
+  Purpose:
+    1. use the liberation fonts for non-CJK characters
+    2. use uming fonts for Chinese characters
+
+  Preferred fonts:
+    liberation fonts
+    cjkunifonts-uming
+-->
+ <!--
+  Serif faces
+ -->
+ <alias>
+  <family>serif</family>
+  <prefer>
+   <family>Liberation Serif</family>
+<!--   <family>AR PL UKai CN</family> -->
+   <family>AR PL ShanHeiSun Uni</family>
+   <family>AR PL SungtiL GB</family>
+   <family>AR PL Mingti2L Big5</family>
+<!--  <family>AR PL UMing CN</family> -->
+  </prefer>
+ </alias>
+ <!--
+  Sans-serif faces
+ -->
+ <alias>
+  <family>sans-serif</family>
+  <prefer>
+   <family>Liberation Sans</family>
+   <family>AR PL ShanHeiSun Uni</family>
+   <family>AR PL SungtiL GB</family>
+   <family>AR PL Mingti2L Big5</family>
+<!--  <family>AR PL UMing CN</family> -->
+  </prefer>
+ </alias>
+ <!--
+  Monospace faces
+ -->
+ <alias>
+  <family>monospace</family>
+  <prefer>
+   <family>Liberation Mono</family>
+   <family>AR PL ShanHeiSun Uni</family>
+   <family>AR PL SungtiL GB</family>
+   <family>AR PL Mingti2L Big5</family>
+   <!--  <family>AR PL UMing CN</family> -->
+  </prefer>
+ </alias>
+ <!--
+    End user preferred fonts config.
+-->
+ <match target="font" >
+  <edit mode="assign" name="rgba" >
+   <const>rgb</const>
+  </edit>
+ </match>
+ <match target="font" >
+  <edit mode="assign" name="hinting" >
+   <bool>true</bool>
+  </edit>
+ </match>
+ <match target="font" >
+  <edit mode="assign" name="hintstyle" >
+   <const>hintmedium</const>
+  </edit>
+ </match>
+ <match target="font" >
+  <edit mode="assign" name="antialias" >
+   <bool>true</bool>
+  </edit>
+ </match>
+</fontconfig>

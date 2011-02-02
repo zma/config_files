@@ -7,15 +7,17 @@ set backup              " keep a backup file
 set backupdir=~/.vibackup " keep all backup files in one central dir
 set backupcopy=yes
 
+" Tab setting, space is preferred
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set smarttab
 set softtabstop=4
 
-" set linebreak
 set nocompatible
-"set textwidth=80
+
+" set linebreak
+set textwidth=72
 set wrap
 
 "set autoindent          " always set autoindenting on
@@ -46,6 +48,9 @@ set autoread
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 nmap W :w<CR>
+
+" Ctrl-T for spell check with aspell
+map  :w!<CR>:!aspell check %<CR>:e! %<CR>
 
 " setlocal spell spelllang=en
 

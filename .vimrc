@@ -4,7 +4,7 @@
 set number              " show line number
 
 set backup              " keep a backup file
-set backupdir=~/.vibackup " keep all backup files in one central dir
+set backupdir=~/.vimbackup " keep all backup files in one central dir
 set backupcopy=yes
 
 " Tab setting, space is preferred
@@ -17,7 +17,7 @@ set softtabstop=4
 set nocompatible
 
 " set linebreak
-set textwidth=72
+" set textwidth=72
 set wrap
 
 "set autoindent          " always set autoindenting on
@@ -48,6 +48,7 @@ set autoread
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 nmap W :w<CR>
+nmap Q :q<CR>
 
 " Ctrl-T for spell check with aspell
 map  :w!<CR>:!aspell check %<CR>:e! %<CR>
@@ -60,13 +61,15 @@ au BufEnter *.cc setf cpp
 au BufEnter *.h setf cpp
 au BufEnter *.c setf c
 au BufEnter *.tex setf tex
+au BufEnter *.txt setf txt
 
 au FileType mail call FT_mail()
-au FileType cpp,c,java,sh,pl,php,asp call FT_c()
+au FileType cpp,c,java,x10,sh,pl,php,asp call FT_c()
 au FileType tex call FT_tex()
+au FileType txt call FT_txt()
 
 function FT_mail()
-    set textwidth=68
+    " set textwidth=68
     " reformat for 72 char lines
     " normal gggqGgg
     " settings
@@ -78,8 +81,18 @@ function FT_mail()
 endfunction
 
 function FT_tex()
-    set textwidth=72
+    " set textwidth=72
     " reformat for 72 char lines
+    " normal gggqGgg
+    " settings
+    set spell spelllang=en
+    " setlocal fileencoding=iso8859-1,utf-8
+    set fileencodings=iso8859-1,utf-8
+endfunction
+
+function FT_txt()
+    " set textwidth=80
+    " reformat for 80 char lines
     " normal gggqGgg
     " settings
     set spell spelllang=en
@@ -89,7 +102,6 @@ endfunction
 
 function FT_c()
     set textwidth=72
-    set nowrap
     set autoindent          " always set autoindenting on
     set cindent             " indent c code
     set nospell

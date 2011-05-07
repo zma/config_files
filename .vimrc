@@ -62,11 +62,13 @@ au BufEnter *.h setf cpp
 au BufEnter *.c setf c
 au BufEnter *.tex setf tex
 au BufEnter *.txt setf txt
+au BufEnter *.bib setf bib
 
 au FileType mail call FT_mail()
-au FileType cpp,c,java,x10,sh,pl,php,asp call FT_c()
+au FileType cpp,c,java,x10,pl,php,asp call FT_c()
 au FileType tex call FT_tex()
 au FileType txt call FT_txt()
+au FileType bib call FT_bib()
 
 function FT_mail()
     " set textwidth=68
@@ -99,6 +101,12 @@ function FT_txt()
     " setlocal fileencoding=iso8859-1,utf-8
     set fileencodings=iso8859-1,utf-8
 endfunction
+
+function FT_bib()
+    set nospell
+    set fileencodings=iso8859-1,utf-8
+endfunction
+
 
 function FT_c()
     set textwidth=72

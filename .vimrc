@@ -137,4 +137,4 @@ to
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 " ============= end vim-latex ==============
-"
+

@@ -71,15 +71,14 @@ au FileType txt call FT_txt()
 au FileType bib call FT_bib()
 
 function FT_mail()
-    " set textwidth=68
+    set textwidth=10000000000
     " reformat for 72 char lines
     " normal gggqGgg
     " settings
     set spell spelllang=en
-    " setlocal fileencoding=iso8859-1,utf-8
     set fileencodings=iso8859-1,utf-8
     " abbreviations
-    iabbr <buffer> gd Good Day!
+    " iabbr <buffer> gd Good Day!
 endfunction
 
 function FT_tex()
@@ -93,7 +92,7 @@ function FT_tex()
 endfunction
 
 function FT_txt()
-    " set textwidth=80
+    set textwidth=68
     " reformat for 80 char lines
     " normal gggqGgg
     " settings
@@ -132,7 +131,7 @@ set grepprg=grep\ -nH\ $*
 filetype indent on
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults
-to
+" to
 " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'

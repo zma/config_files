@@ -1,6 +1,6 @@
 ;; Personal Emacs Configuration
 ;; version 0.0.2, 1 Dec 2009
-;; Zhiqiang Ma, eric.zq.ma (at) gmail
+;; Zhiqiang Ma, http://www.zhiqiangma.com
 
 ;; ===============common config==================
 

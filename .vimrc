@@ -1,5 +1,5 @@
 " vimrc
-" Zhiqiang Ma, http://fclose.com/zma/
+" Zhiqiang Ma, http://www.ZhiqiangMa.com
 
 set number              " show line number
 
@@ -49,6 +49,7 @@ nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 nmap W :w<CR>
 nmap Q :q<CR>
+set pastetoggle=<F2>
 
 " Ctrl-T for spell check with aspell
 map  :w!<CR>:!aspell check %<CR>:e! %<CR>
@@ -71,7 +72,7 @@ au FileType txt call FT_txt()
 au FileType bib call FT_bib()
 
 function FT_mail()
-    set textwidth=10000000000
+    set textwidth=100000000000
     " reformat for 72 char lines
     " normal gggqGgg
     " settings
@@ -92,7 +93,7 @@ function FT_tex()
 endfunction
 
 function FT_txt()
-    set textwidth=68
+    " set textwidth=68
     " reformat for 80 char lines
     " normal gggqGgg
     " settings

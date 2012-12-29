@@ -42,6 +42,9 @@ set fileencodings=utf-8,gbk,ucs-bom,latin1  " good for Chinese charactor
 
 set autoread
 
+" disable auto comment
+au FileType c,cpp setlocal comments-=:// comments+=f://
+
 " =============
 " Key Shortcut
 " =============

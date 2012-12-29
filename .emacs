@@ -1,5 +1,4 @@
-;; Personal Emacs Configuration
-;; version 0.0.2, 1 Dec 2009
+;; Emacs Configuration
 ;; Zhiqiang Ma, http://www.zhiqiangma.com
 
 ;; ===============common config==================
@@ -66,6 +65,17 @@
 (setq default-major-mode 'text-mode)
 
 ;; ===================end common config=============
+
+;; =================== etags =====================
+(defvar tags-cmd "etags -R ./* 2>/dev/null")
+
+(defun regen-tags ()
+  "Regenerate the tags file for the current working directory"
+  (interactive)
+  (let ((tag-file (concat default-directory "TAGS")))
+    (shell-command tags-cmd)
+    (visit-tags-table tag-file)))
+;; =================== end etags =====================
 
 ;; ==================c/c++====================
 (add-hook 'c-mode-hook 'linux-c-mode)

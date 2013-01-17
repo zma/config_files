@@ -1,6 +1,13 @@
 " vimrc
 " Zhiqiang Ma, http://www.ZhiqiangMa.com
 
+set nocompatible
+
+syntax on
+
+" pathogen
+execute pathogen#infect()
+
 set number              " show line number
 
 set backup              " keep a backup file
@@ -14,8 +21,6 @@ set expandtab
 set smarttab
 set softtabstop=4
 
-set nocompatible
-
 " set linebreak
 " set textwidth=72
 set wrap
@@ -23,12 +28,10 @@ set wrap
 "set autoindent          " always set autoindenting on
 "set cindent             " indent c code
 
-syntax on
-
 set incsearch           " do incremental searching
 set hlsearch            " high light the search content
 
-set history=500         " keep 50 lines of command line history
+set history=1000        " keep N lines of command line history
 
 set number
 set ruler               " show the cursor position all the time
@@ -42,8 +45,13 @@ set fileencodings=utf-8,gbk,ucs-bom,latin1  " good for Chinese charactor
 
 set autoread
 
+set statusline+=%(%{Tlist_Get_Tagname_By_Line()}%), " Function name
+
 " disable auto comment
 au FileType c,cpp setlocal comments-=:// comments+=f://
+
+" omni completion
+set ofu=syntaxcomplete#Complete
 
 " =============
 " Key Shortcut
@@ -54,8 +62,22 @@ nmap W :w<CR>
 nmap Q :q<CR>
 set pastetoggle=<F2>
 
-" Ctrl-T for spell check with aspell
+" Ctrl-E for spell check with aspell
 map  :w!<CR>:!aspell check %<CR>:e! %<CR>
+
+" F2 for NERDtree
+" map <F2> :execute 'NERDTreeToggle ' . getcwd()<CR>
+map <F2> :execute 'NERDTreeTabsToggle'<CR>
+
+" F3 for taglist
+map <F3> :TlistToggle <CR>
+
+" lustyjuggler
+map <F4> :LustyJuggler <CR>
+
+" gen tags in vim
+map <F9> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F8> :!/usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q ./*.c ./*.cc ./*.h ./*.s ./*.sh<CR>
 
 " setlocal spell spelllang=en
 

@@ -1,7 +1,10 @@
 ;; Emacs Configuration
-;; Zhiqiang Ma, http://www.zhiqiangma.com
+;; By Zhiqiang Ma, http://www.zhiqiangma.com
 
 ;; ===============common config==================
+
+;; font size
+(set-face-attribute 'default nil :height 120)
 
 ;; No start up message
 (setq inhibit-startup-message t)
@@ -19,10 +22,13 @@
 ;; (scroll-bar-mode nil)
 
 ;; No tool bar
-;; (tool-bar-mode nil)
+(tool-bar-mode -1)
 
 ;; No menu bar
-(menu-bar-mode nil)
+(menu-bar-mode -1)
+
+;; keys
+(global-set-key "\C-c\C-x" 'kill-whole-line)
 
 ;; Set the frame size
 (defun set-frame-size()
@@ -35,6 +41,9 @@
 ;; Display line and column number
 (setq column-number-mode t)
 (setq line-number-mode t)
+
+;; Display line number
+(global-linum-mode t)
 
 ;; Display the paren
 (show-paren-mode t)

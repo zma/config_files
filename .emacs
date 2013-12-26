@@ -1,5 +1,5 @@
 ;; Emacs Configuration
-;; By Zhiqiang Ma, http://www.zhiqiangma.com
+;; By Zhiqiang (Eric) Ma, http://www.zhiqiangma.com
 
 ;; ===============common config==================
 

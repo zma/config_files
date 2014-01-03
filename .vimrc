@@ -6,14 +6,14 @@ set nocompatible
 filetype on
 filetype plugin on
 
-" filetype indent on
-" autocmd BufRead,BufNewFile * filetype indent off
-autocmd BufRead,BufNewFile * filetype indent on
+filetype indent off
+autocmd BufRead,BufNewFile * filetype indent off
+
 autocmd BufRead,BufNewFile *.h filetype indent on
 autocmd BufRead,BufNewFile *.c filetype indent on
 autocmd BufRead,BufNewFile *.cpp filetype indent on
 autocmd BufRead,BufNewFile *.cc filetype indent on
-autocmd BufRead,BufNewFile *.ml filetype indent on
+" autocmd BufRead,BufNewFile *.ml filetype indent off
 autocmd BufRead,BufNewFile *.sh filetype indent on
 autocmd BufRead,BufNewFile *.py filetype indent on
 
@@ -213,28 +213,34 @@ endfunction
 
 function FT_c()
     set textwidth=72
+    set colorcolumn=72
     set autoindent          " always set autoindenting on
     set cindent             " indent c code
     set nospell
 endfunction
 
 function FT_ocaml()
+    set textwidth=80
+    set colorcolumn=80
     filetype plugin indent on
     set shiftwidth=2
     set tabstop=2
-    let opamprefix=system("opam config var prefix | tr -d '\n'")
-    " ocp-indent
-    execute "autocmd FileType ocaml source ".opamprefix."/share/typerex/ocp-indent/ocp-indent.vim"
+    " ocp-indent with ocp-indent-vim
+    let opamshare=system("opam config var share | tr -d '\n'")
+    execute "autocmd FileType ocaml source".opamshare."/vim/syntax/ocp-indent.vim"
+    filetype indent on
 endfunction
 
+
 " --------------- for OCaml -------------
+
 " merlin
 let opamprefix=system("opam config var prefix | tr -d '\n'")
 :set rtp+=opamprefix."/share/ocamlmerlin/vim"
 :set rtp+=opamprefix."/share/ocamlmerlin/vimbufsync"
 
 let g:syntastic_ocaml_checkers=['merlin']
-let g:syntastic_omlet_checkers=['merlin']
+" let g:syntastic_omlet_checkers=['merlin']
 
 " omlet
 " let g:omlet_indent_match = 0

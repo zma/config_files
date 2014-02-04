@@ -82,6 +82,8 @@ set ofu=syntaxcomplete#Complete
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 
+" tags
+set tags=tags;/
 
 " =============
 " Key Shortcut
@@ -114,8 +116,8 @@ map <F7> :make! <CR> :cwindow <CR>
 map <C-F7> :make <CR> :cwindow <CR>
 
 " gen tags in vim
-map <F8> :!/usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q ./*.c ./*.cc */*.cpp ./*.h ./*.hpp ./*.s ./*.sh<CR>
-map <C-F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+map <F8>   :!find . -maxdepth 1 -regex '.*\.\(c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\<bar>hpp\<bar>ml\<bar>mli\)' <bar> /usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
+map <C-F8> :!find .             -regex '.*\.\(c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\<bar>hpp\<bar>ml\<bar>mli\)' <bar> /usr/bin/ctags --c++-kinds=+p --fields=+iaS --extra=+q -L-<CR>
 
 " number toggle
 map <F10> :let &number=1-&number <CR>
@@ -125,7 +127,8 @@ map <F10> :let &number=1-&number <CR>
 au BufEnter *.cpp setf cpp
 au BufEnter *.c++ setf cpp
 au BufEnter *.cc setf cpp
-au BufEnter *.h setf cpp
+au BufEnter *.hpp setf cpp
+au BufEnter *.h setf c
 au BufEnter *.c setf c
 au BufEnter *.tex setf tex
 au BufEnter *.txt setf txt
@@ -133,14 +136,17 @@ au BufEnter *.bib setf bib
 au BufEnter *.php setf php
 au BufEnter *.ml setf ocaml
 au BufEnter *.mli setf ocaml
+au BufEnter *.scala setf scala
 
 au FileType mail call FT_mail()
-au FileType cpp,cc,c,java,x10,pl,asp call FT_c()
+au FileType cpp call FT_cpp()
+au FileType c call FT_c()
 au FileType php call FT_php()
 au FileType tex call FT_tex()
 au FileType txt call FT_txt()
 au FileType bib call FT_bib()
 au FileType ocaml call FT_ocaml()
+au FileType scala call FT_scala()
 
 function FT_mail()
     set textwidth=100000000000
@@ -211,58 +217,90 @@ function FT_php()
     set nospell
 endfunction
 
+" ------------- C/C++ ----------------------------
 function FT_c()
+    set shiftwidth=4
+    set tabstop=4
+    " the textwidth is used for formatting the comments
     set textwidth=72
-    set colorcolumn=72
+    set colorcolumn=73
     set autoindent          " always set autoindenting on
     set cindent             " indent c code
     set nospell
 endfunction
 
-function FT_ocaml()
-    set textwidth=80
-    set colorcolumn=80
-    filetype plugin indent on
+function FT_cpp()
     set shiftwidth=2
     set tabstop=2
-    " ocp-indent with ocp-indent-vim
-    let opamshare=system("opam config var share | tr -d '\n'")
-    execute "autocmd FileType ocaml source".opamshare."/vim/syntax/ocp-indent.vim"
-    filetype indent on
+    set textwidth=72
+    set colorcolumn=73
+    set autoindent          " always set autoindenting on
+    set cindent             " indent c code
+    set nospell
 endfunction
 
 
-" --------------- for OCaml -------------
+" syntastic
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
+"
+" ------------- End C/C++ ----------------------------
 
+" ------------------ OCaml --------------------
+
+" ocp-indent with ocp-indent-vim
+let s:opamshare=system("opam config var share | tr -d '\n'")
+execute "autocmd FileType ocaml source ".s:opamshare."/vim/syntax/ocp-indent.vim"
+
+let s:opamshare=system("opam config var share | tr -d '\n'")
 " merlin
-let opamprefix=system("opam config var prefix | tr -d '\n'")
-:set rtp+=opamprefix."/share/ocamlmerlin/vim"
-:set rtp+=opamprefix."/share/ocamlmerlin/vimbufsync"
+execute "set rtp+=".s:opamshare."/ocamlmerlin/vim"
+execute "set rtp+=".s:opamshare."/ocamlmerlin/vimbufsync"
 
+" merlin with syntastic
 let g:syntastic_ocaml_checkers=['merlin']
-" let g:syntastic_omlet_checkers=['merlin']
 
-" omlet
-" let g:omlet_indent_match = 0
-
-" neocomplcache works with merlin
+" merlin with neocomplcache
 if !exists('g:neocomplcache_force_omni_patterns')
   let g:neocomplcache_force_omni_patterns = {}
 endif
 let g:neocomplcache_force_omni_patterns.ocaml = '[^. *\t]\.\w*\|\h\w*|#'
 
-" --------------- End for OCaml -------------
+" syntastic
+let g:syntastic_ocaml_use_ocamlc = 1
+let g:syntastic_ocaml_use_janestreet_core = 1
+let g:syntastic_ocaml_janestreet_core_dir = "/home/zma/.opam/4.00.1/lib/core/"
+let g:syntastic_ocaml_camlp4r = 1
+let g:syntastic_ocaml_use_ocamlbuild = 1
 
+
+function FT_ocaml()
+    " set textwidth=80
+    set colorcolumn=81
+    set shiftwidth=2
+    set tabstop=2
+    " must before plugin indent on
+    filetype indent on
+    filetype plugin indent on
+
+    " merlin with core
+    " execute ":Use core"
+endfunction
+
+" ------------------ End OCaml --------------------
+
+" ------------------ Scala --------------------
+
+function FT_scala()
+    set colorcolumn=81
+    set shiftwidth=2
+    set tabstop=2
+    filetype indent on
+    filetype plugin indent on
+endfunction
+
+" ------------------ End Scala --------------------
 
 " ------------- LustyJuggler: no warning on vims without Ruby ---------
 let g:LustyJugglerSuppressRubyWarning = 1
 " ------------- End LustyJuggler: no warning on vims without Ruby ---------
-
-" ------------- syntactic ----------------------------
-" Moreover it is possible to add additional compiler options to the syntax
-" checking execution via the variable 'g:syntastic_cpp_compiler_options':
-"
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
-"
-" ------------- syntactic ----------------------------
 

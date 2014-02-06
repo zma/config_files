@@ -6,6 +6,71 @@ set nocompatible
 filetype on
 filetype plugin on
 
+
+syntax on
+
+" pathogen
+execute pathogen#infect()
+
+" file autocomplete
+set wildmode=longest,list,full
+set wildmenu
+
+" show line number
+set number
+
+" backup
+" keep a backup file
+set backup
+" create the vimbackup dir if it does not exist
+let t:check_vimbackup=system("bash -c \"if [ ! -d ~/.vimbackup ]; then mkdir ~/.vimbackup; fi\"")
+" keep all backup files in one central dir
+set backupdir=~/.vimbackup
+set backupcopy=yes
+
+" Default Tab setting, space is preferred
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+set softtabstop=4
+
+" set linebreak
+" set textwidth=72
+set wrap
+
+" do incremental searching
+set incsearch
+" high light the search content
+set hlsearch
+
+" keep N lines of command line history
+set history=5120
+
+" display incomplete commands
+" set showcmd
+
+" good for Chinese charactor
+set fileencodings=utf-8,gbk,ucs-bom,latin1
+
+" move cursor by mouse click
+" set mouse=a
+
+" set autoread
+
+set number
+" show the cursor position all the time
+" set ruler
+" set rulerformat=%15(%c%V\ %p%%%)
+
+:set laststatus=2
+" :set statusline+=%(%{Tlist_Get_Tagname_By_Line()}%) " Function name
+" :set statusline=%<%f%=%([%{Tlist_Get_Tagname_By_Line()}]%)
+:set statusline=%<%([%{Tlist_Get_Tagname_By_Line()}]%)%=%(%c%V\ %p%%%)\ %f
+
+" taglist
+" let Tlist_Auto_Open=1
+
 filetype indent off
 autocmd BufRead,BufNewFile * filetype indent off
 
@@ -21,62 +86,6 @@ autocmd BufRead,BufNewFile *.py filetype indent on
 "set autoindent          " always set autoindenting on
 "set cindent             " indent c code
 
-syntax on
-
-" pathogen
-execute pathogen#infect()
-
-" file autocomplete
-set wildmode=longest,list,full
-set wildmenu
-
-" show line number
-set number
-
-" backup
-set backup              " keep a backup file
-set backupdir=~/.vimbackup " keep all backup files in one central dir
-set backupcopy=yes
-
-" Default Tab setting, space is preferred
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set smarttab
-set softtabstop=4
-
-" set linebreak
-" set textwidth=72
-set wrap
-
-set incsearch           " do incremental searching
-set hlsearch            " high light the search content
-
-set history=5120        " keep N lines of command line history
-
-" set showcmd             " display incomplete commands
-
-set fileencodings=utf-8,gbk,ucs-bom,latin1  " good for Chinese charactor
-
-" set mouse=a             " move cursor by mouse click
-
-" set autoread
-
-set number
-" set ruler               " show the cursor position all the time
-" set rulerformat=%15(%c%V\ %p%%%)
-
-:set laststatus=2
-" :set statusline+=%(%{Tlist_Get_Tagname_By_Line()}%) " Function name
-" :set statusline=%<%f%=%([%{Tlist_Get_Tagname_By_Line()}]%)
-:set statusline=%<%([%{Tlist_Get_Tagname_By_Line()}]%)%=%(%c%V\ %p%%%)\ %f
-
-" taglist
-" let Tlist_Auto_Open=1
-
-" disable auto comment for c/cpp
-au FileType c,cpp,cc setlocal comments-=:// comments+=f://
-
 " omni completion
 set ofu=syntaxcomplete#Complete
 
@@ -86,9 +95,21 @@ let g:neocomplcache_enable_at_startup = 1
 " tags
 set tags=tags;/
 
-" =============
-" Key Shortcut
-" =============
+" ==== Start Autotags Settings =======
+let g:autotags_no_global = 0
+let g:autotags_ctags_opts = "--exclude=target --exclude=vendor"
+let g:autotags_ctags_languages = "+Scala,+Java,+Vim,+C,+CH,+CC,+CPP"
+let g:autotags_ctags_langmap = "Scala:.scala,Java:.java,Vim:.vim,JavaScript:.js,C:.c,CH:.h,CC:.cc,CPP:cpp"
+let g:autotags_ctags_global_include = ""
+" ==== End Start Autotags Settings ===
+
+" setlocal spell spelllang=en
+
+" ------------- LustyJuggler: no warning on vims without Ruby ---------
+let g:LustyJugglerSuppressRubyWarning = 1
+" ------------- End LustyJuggler: no warning on vims without Ruby ---------
+
+" ========= Key Shortcuts =========
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 nmap W :w<CR>
@@ -123,7 +144,8 @@ map <C-F8> :!find .             -regex '.*\.\(c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\
 " number toggle
 map <F10> :let &number=1-&number <CR>
 
-" setlocal spell spelllang=en
+
+" ======== language specific settings ===========
 
 au BufEnter *.cpp setf cpp
 au BufEnter *.c++ setf cpp
@@ -220,6 +242,8 @@ endfunction
 
 " ------------- C/C++ ----------------------------
 function FT_c()
+    " disable auto comment for c/cpp
+    setlocal comments-=:// comments+=f://
     set shiftwidth=4
     set tabstop=4
     " the textwidth is used for formatting the comments
@@ -231,6 +255,8 @@ function FT_c()
 endfunction
 
 function FT_cpp()
+    " disable auto comment for c/cpp
+    setlocal comments-=:// comments+=f://
     set shiftwidth=2
     set tabstop=2
     set textwidth=72
@@ -239,7 +265,6 @@ function FT_cpp()
     set cindent             " indent c code
     set nospell
 endfunction
-
 
 " syntastic
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
@@ -269,7 +294,8 @@ let g:syntastic_ocaml_checkers=['merlin']
 " syntastic
 let g:syntastic_ocaml_use_ocamlc = 1
 let g:syntastic_ocaml_use_janestreet_core = 1
-let g:syntastic_ocaml_janestreet_core_dir = "/home/zma/.opam/4.00.1/lib/core/"
+let s:opamlib=system("opam config var lib | tr -d '\n'")
+execute "let g:syntastic_ocaml_janestreet_core_dir = \"".s:opamlib."/core/\""
 let g:syntastic_ocaml_camlp4r = 1
 let g:syntastic_ocaml_use_ocamlbuild = 1
 
@@ -301,8 +327,4 @@ function FT_scala()
 endfunction
 
 " ------------------ End Scala --------------------
-
-" ------------- LustyJuggler: no warning on vims without Ruby ---------
-let g:LustyJugglerSuppressRubyWarning = 1
-" ------------- End LustyJuggler: no warning on vims without Ruby ---------
 

@@ -13,9 +13,10 @@ autocmd BufRead,BufNewFile *.h filetype indent on
 autocmd BufRead,BufNewFile *.c filetype indent on
 autocmd BufRead,BufNewFile *.cpp filetype indent on
 autocmd BufRead,BufNewFile *.cc filetype indent on
-" autocmd BufRead,BufNewFile *.ml filetype indent off
 autocmd BufRead,BufNewFile *.sh filetype indent on
+autocmd BufRead,BufNewFile *.bash filetype indent on
 autocmd BufRead,BufNewFile *.py filetype indent on
+" autocmd BufRead,BufNewFile *.ml filetype indent off
 
 "set autoindent          " always set autoindenting on
 "set cindent             " indent c code
@@ -260,10 +261,10 @@ execute "set rtp+=".s:opamshare."/ocamlmerlin/vimbufsync"
 let g:syntastic_ocaml_checkers=['merlin']
 
 " merlin with neocomplcache
-if !exists('g:neocomplcache_force_omni_patterns')
-  let g:neocomplcache_force_omni_patterns = {}
-endif
-let g:neocomplcache_force_omni_patterns.ocaml = '[^. *\t]\.\w*\|\h\w*|#'
+" if !exists('g:neocomplcache_force_omni_patterns')
+"   let g:neocomplcache_force_omni_patterns = {}
+" endif
+" let g:neocomplcache_force_omni_patterns.ocaml = '[^. *\t]\.\w*\|\h\w*|#'
 
 " syntastic
 let g:syntastic_ocaml_use_ocamlc = 1
@@ -271,7 +272,6 @@ let g:syntastic_ocaml_use_janestreet_core = 1
 let g:syntastic_ocaml_janestreet_core_dir = "/home/zma/.opam/4.00.1/lib/core/"
 let g:syntastic_ocaml_camlp4r = 1
 let g:syntastic_ocaml_use_ocamlbuild = 1
-
 
 function FT_ocaml()
     " set textwidth=80
@@ -296,6 +296,8 @@ function FT_scala()
     set tabstop=2
     filetype indent on
     filetype plugin indent on
+    " neocomplcache for scala
+    " let g:neocomplcache_force_omni_patterns.scala = '[^. *\t]\.\w*\|\h\w*|#'
 endfunction
 
 " ------------------ End Scala --------------------

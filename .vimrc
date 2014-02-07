@@ -114,9 +114,9 @@ autocmd VimEnter * wincmd p
 
 " ========= Key Shortcuts =========
 nmap W :w<CR>
-nmap Q :q<CR> 
 " close NERDTree and close it
-nmap ZZ :NERDTreeClose<CR> :q<CR> 
+nmap Q :NERDTreeClose<CR> :q<CR> 
+nmap ZZ :q<CR> 
 
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>

@@ -69,13 +69,14 @@ set statusline=%<%([%{Tlist_Get_Tagname_By_Line()}]%)\ %t%=%c,%l/%L\ %P\ %F\ [%{
 filetype indent off
 autocmd BufRead,BufNewFile * filetype indent off
 
-autocmd BufRead,BufNewFile *.h filetype indent on
-autocmd BufRead,BufNewFile *.c filetype indent on
-autocmd BufRead,BufNewFile *.cpp filetype indent on
-autocmd BufRead,BufNewFile *.cc filetype indent on
-autocmd BufRead,BufNewFile *.sh filetype indent on
-autocmd BufRead,BufNewFile *.bash filetype indent on
-autocmd BufRead,BufNewFile *.py filetype indent on
+" autocmd BufRead,BufNewFile *.h filetype indent on
+" autocmd BufRead,BufNewFile *.c filetype indent on
+" autocmd BufRead,BufNewFile *.cpp filetype indent on
+" autocmd BufRead,BufNewFile *.cc filetype indent on
+" autocmd BufRead,BufNewFile *.sh filetype indent on
+" autocmd BufRead,BufNewFile *.bash filetype indent on
+" autocmd BufRead,BufNewFile *.py filetype indent on
+" autocmd BufRead,BufNewFile *.scala filetype indent on
 " autocmd BufRead,BufNewFile *.ml filetype indent off
 
 " omni completion
@@ -86,6 +87,8 @@ let g:neocomplcache_enable_at_startup = 1
 
 " taglist: auto open
 let Tlist_Auto_Open = 1
+" auto close Tlist window if it is the only window
+let Tlist_Exit_OnlyWindow = 1
 
 " tags
 set tags=tags;/
@@ -104,17 +107,24 @@ let g:autotags_ctags_global_include = ""
 let g:LustyJugglerSuppressRubyWarning = 1
 " ------------- End LustyJuggler: no warning on vims without Ruby ---------
 
+" syntastic
+let g:syntastic_check_on_wq = 1
+
+"NERDTree on the right
+let NERDTreeWinPos="right"
+
 " ========= Key Shortcuts =========
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 nmap W :w<CR>
-nmap Q :TlistClose<CR> :q<CR> 
+" close NERDTree and close it
+nmap Q :q<CR> 
+nmap ZZ :NERDTreeClose<CR> :q<CR> 
 
 " F2 in insert mode for paste toggle
 set pastetoggle=<F2>
 
-" F2 for NERDtree
-" map <F2> :execute 'NERDTreeToggle ' . getcwd()<CR>
+" F2 for NERDTree
 map <F2> :execute 'NERDTreeTabsToggle'<CR>
 
 " F3 for taglist
@@ -296,6 +306,7 @@ function FT_ocaml()
     set colorcolumn=80
     set shiftwidth=2
     set tabstop=2
+    set autoindent
     " must before plugin indent on
     filetype indent on
     filetype plugin indent on
@@ -308,10 +319,15 @@ endfunction
 
 " ------------------ Scala --------------------
 
+" disable syntastic for scala---it is too slow
+" use sbt instead
+let g:syntastic_scala_checkers=['']
+
 function FT_scala()
     set colorcolumn=80
     set shiftwidth=2
     set tabstop=2
+    set autoindent
     filetype indent on
     filetype plugin indent on
     " neocomplcache for scala

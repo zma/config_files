@@ -1,5 +1,5 @@
 " ~/.vimrc
-" Zhiqiang (Eric) Ma, http://www.ZhiqiangMa.com
+" Eric Zhiqiang Ma, http://www.ericzma.com
 
 set nocompatible
 
@@ -58,19 +58,14 @@ set fileencodings=utf-8,gbk,ucs-bom,latin1
 
 " set autoread
 
+" show line number
 set number
-" show the cursor position all the time
-" set ruler
-" set rulerformat=%15(%c%V\ %p%%%)
 
-:set laststatus=2
-" :set statusline+=%(%{Tlist_Get_Tagname_By_Line()}%) " Function name
-" :set statusline=%<%f%=%([%{Tlist_Get_Tagname_By_Line()}]%)
-:set statusline=%<%([%{Tlist_Get_Tagname_By_Line()}]%)%=%(%c%V\ %p%%%)\ %f
+" status bar
+set laststatus=2
+set statusline=%<%([%{Tlist_Get_Tagname_By_Line()}]%)\ %t%=%c,%l/%L\ %P\ %F\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y
 
-" taglist
-" let Tlist_Auto_Open=1
-
+" indent settings
 filetype indent off
 autocmd BufRead,BufNewFile * filetype indent off
 
@@ -83,25 +78,25 @@ autocmd BufRead,BufNewFile *.bash filetype indent on
 autocmd BufRead,BufNewFile *.py filetype indent on
 " autocmd BufRead,BufNewFile *.ml filetype indent off
 
-"set autoindent          " always set autoindenting on
-"set cindent             " indent c code
-
 " omni completion
 set ofu=syntaxcomplete#Complete
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 
+" taglist: auto open
+let Tlist_Auto_Open = 1
+
 " tags
 set tags=tags;/
 
-" ==== Start Autotags Settings =======
+" ==== Start AutoTag Settings =======
 let g:autotags_no_global = 0
 let g:autotags_ctags_opts = "--exclude=target --exclude=vendor"
 let g:autotags_ctags_languages = "+Scala,+Java,+Vim,+C,+CH,+CC,+CPP"
 let g:autotags_ctags_langmap = "Scala:.scala,Java:.java,Vim:.vim,JavaScript:.js,C:.c,CH:.h,CC:.cc,CPP:cpp"
 let g:autotags_ctags_global_include = ""
-" ==== End Start Autotags Settings ===
+" ==== End Start AutoTag Settings ===
 
 " setlocal spell spelllang=en
 
@@ -113,8 +108,7 @@ let g:LustyJugglerSuppressRubyWarning = 1
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>
 nmap W :w<CR>
-" nmap Q :TlistClose<CR> :q<CR> 
-nmap Q :q<CR> 
+nmap Q :TlistClose<CR> :q<CR> 
 
 " F2 in insert mode for paste toggle
 set pastetoggle=<F2>
@@ -143,7 +137,6 @@ map <C-F8> :!find .             -regex '.*\.\(c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\
 
 " number toggle
 map <F10> :let &number=1-&number <CR>
-
 
 " ======== language specific settings ===========
 
@@ -182,6 +175,7 @@ function FT_mail()
     " iabbr <buffer> gd Good Day!
 endfunction
 
+" ============= vim-latex ==================
 function FT_tex()
     " set textwidth=72
     " reformat for 72 char lines
@@ -191,7 +185,6 @@ function FT_tex()
     " setlocal fileencoding=iso8859-1,utf-8
     set fileencodings=iso8859-1,utf-8
 
-    " ============= vim-latex ==================
     " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
     filetype plugin on
 
@@ -212,9 +205,8 @@ function FT_tex()
     " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
     " The following changes the default filetype back to 'tex':
     let g:tex_flavor='latex'
-    " ============= end vim-latex ==============
-
 endfunction
+" ============= end vim-latex ==============
 
 function FT_txt()
     " set textwidth=68
@@ -240,7 +232,7 @@ function FT_php()
     set nospell
 endfunction
 
-" ------------- C/C++ ----------------------------
+" ------------- C ----------------------------
 function FT_c()
     " disable auto comment for c/cpp
     setlocal comments-=:// comments+=f://
@@ -301,7 +293,7 @@ let g:syntastic_ocaml_use_ocamlbuild = 1
 
 function FT_ocaml()
     " set textwidth=80
-    set colorcolumn=81
+    set colorcolumn=80
     set shiftwidth=2
     set tabstop=2
     " must before plugin indent on
@@ -317,7 +309,7 @@ endfunction
 " ------------------ Scala --------------------
 
 function FT_scala()
-    set colorcolumn=81
+    set colorcolumn=80
     set shiftwidth=2
     set tabstop=2
     filetype indent on

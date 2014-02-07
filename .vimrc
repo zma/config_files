@@ -108,15 +108,13 @@ let g:syntastic_check_on_wq = 1
 let NERDTreeWinPos="right"
 
 " Open NERDTree by default
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " after opening the NERDTree, move the cursor to the main window
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * wincmd p
 
 " ========= Key Shortcuts =========
 nmap W :w<CR>
-" close NERDTree and close it
-nmap Q :NERDTreeClose<CR> :q<CR> 
-nmap ZZ :q<CR> 
+nmap Q :q<CR> 
 
 nmap <C-h> :tabprevious<CR>
 nmap <C-l> :tabnext<CR>

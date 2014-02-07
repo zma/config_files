@@ -180,7 +180,9 @@ autocmd FileType scala call FT_scala()
 autocmd FileType sh call FT_sh()
 
 function FT_sh()
+    set autoindent
     filetype indent on
+    filetype plugin indent on
 endfunction
 
 function FT_mail()

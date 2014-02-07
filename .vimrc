@@ -66,18 +66,12 @@ set laststatus=2
 set statusline=%<%([%{Tlist_Get_Tagname_By_Line()}]%)\ %t%=%c,%l/%L\ %P\ %F\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y
 
 " indent settings
-filetype indent off
-autocmd BufRead,BufNewFile * filetype indent off
+" turn this to on to make indent work
+filetype indent on
 
-" autocmd BufRead,BufNewFile *.h filetype indent on
-" autocmd BufRead,BufNewFile *.c filetype indent on
-" autocmd BufRead,BufNewFile *.cpp filetype indent on
-" autocmd BufRead,BufNewFile *.cc filetype indent on
-" autocmd BufRead,BufNewFile *.sh filetype indent on
-" autocmd BufRead,BufNewFile *.bash filetype indent on
-" autocmd BufRead,BufNewFile *.py filetype indent on
-" autocmd BufRead,BufNewFile *.scala filetype indent on
-" autocmd BufRead,BufNewFile *.ml filetype indent off
+" by default, turn it off
+" and leave turning indent on in each language's config in FT_*()
+autocmd BufRead,BufNewFile * filetype indent off
 
 " omni completion
 set ofu=syntaxcomplete#Complete
@@ -90,7 +84,7 @@ let Tlist_Auto_Open = 1
 " auto close Tlist window if it is the only window
 let Tlist_Exit_OnlyWindow = 1
 
-" tags
+" where to find the tags file
 set tags=tags;/
 
 " ==== Start AutoTag Settings =======
@@ -110,18 +104,24 @@ let g:LustyJugglerSuppressRubyWarning = 1
 " syntastic
 let g:syntastic_check_on_wq = 1
 
-"NERDTree on the right
+" NERDTree on the right
 let NERDTreeWinPos="right"
 
+" Open NERDTree by default
+autocmd VimEnter * NERDTree
+" after opening the NERDTree, move the cursor to the main window
+autocmd VimEnter * wincmd p
+
 " ========= Key Shortcuts =========
-nmap <C-h> :tabprevious<CR>
-nmap <C-l> :tabnext<CR>
 nmap W :w<CR>
-" close NERDTree and close it
 nmap Q :q<CR> 
+" close NERDTree and close it
 nmap ZZ :NERDTreeClose<CR> :q<CR> 
 
-" F2 in insert mode for paste toggle
+nmap <C-h> :tabprevious<CR>
+nmap <C-l> :tabnext<CR>
+
+" F2 in insert mode for paste toggle 
 set pastetoggle=<F2>
 
 " F2 for NERDTree
@@ -148,31 +148,40 @@ map <C-F8> :!find .             -regex '.*\.\(c\<bar>h\<bar>cc\<bar>hh\<bar>cpp\
 " number toggle
 map <F10> :let &number=1-&number <CR>
 
+" ========= End Key Shortcuts =========
+
 " ======== language specific settings ===========
 
-au BufEnter *.cpp setf cpp
-au BufEnter *.c++ setf cpp
-au BufEnter *.cc setf cpp
-au BufEnter *.hpp setf cpp
-au BufEnter *.h setf c
-au BufEnter *.c setf c
-au BufEnter *.tex setf tex
-au BufEnter *.txt setf txt
-au BufEnter *.bib setf bib
-au BufEnter *.php setf php
-au BufEnter *.ml setf ocaml
-au BufEnter *.mli setf ocaml
-au BufEnter *.scala setf scala
+autocmd BufEnter *.cpp setf cpp
+autocmd BufEnter *.c++ setf cpp
+autocmd BufEnter *.cc setf cpp
+autocmd BufEnter *.hpp setf cpp
+autocmd BufEnter *.h setf c
+autocmd BufEnter *.c setf c
+autocmd BufEnter *.tex setf tex
+autocmd BufEnter *.txt setf txt
+autocmd BufEnter *.bib setf bib
+autocmd BufEnter *.php setf php
+autocmd BufEnter *.ml setf ocaml
+autocmd BufEnter *.mli setf ocaml
+autocmd BufEnter *.scala setf scala
+autocmd BufEnter *.bash setf sh
+autocmd BufEnter *.sh setf sh
 
-au FileType mail call FT_mail()
-au FileType cpp call FT_cpp()
-au FileType c call FT_c()
-au FileType php call FT_php()
-au FileType tex call FT_tex()
-au FileType txt call FT_txt()
-au FileType bib call FT_bib()
-au FileType ocaml call FT_ocaml()
-au FileType scala call FT_scala()
+autocmd FileType mail call FT_mail()
+autocmd FileType cpp call FT_cpp()
+autocmd FileType c call FT_c()
+autocmd FileType php call FT_php()
+autocmd FileType tex call FT_tex()
+autocmd FileType txt call FT_txt()
+autocmd FileType bib call FT_bib()
+autocmd FileType ocaml call FT_ocaml()
+autocmd FileType scala call FT_scala()
+autocmd FileType sh call FT_sh()
+
+function FT_sh()
+    filetype indent on
+endfunction
 
 function FT_mail()
     set textwidth=100000000000
@@ -185,16 +194,15 @@ function FT_mail()
     " iabbr <buffer> gd Good Day!
 endfunction
 
-" ============= vim-latex ==================
 function FT_tex()
     " set textwidth=72
     " reformat for 72 char lines
     " normal gggqGgg
-    " settings
     set spell spelllang=en
-    " setlocal fileencoding=iso8859-1,utf-8
     set fileencodings=iso8859-1,utf-8
+    " setlocal fileencoding=iso8859-1,utf-8
 
+    " ============= vim-latex ==================
     " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
     filetype plugin on
 
@@ -215,14 +223,13 @@ function FT_tex()
     " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
     " The following changes the default filetype back to 'tex':
     let g:tex_flavor='latex'
+    " ============= end vim-latex ==============
 endfunction
-" ============= end vim-latex ==============
 
 function FT_txt()
     " set textwidth=68
     " reformat for 80 char lines
     " normal gggqGgg
-    " settings
     " set spell spelllang=en
     set nospell
     " setlocal fileencoding=iso8859-1,utf-8
@@ -237,41 +244,43 @@ endfunction
 function FT_php()
     set textwidth=100000000000
     " set textwidth=72
-    set noautoindent          " always set autoindenting on
-    set nocindent             " indent c code
+    set noautoindent
+    set nocindent
     set nospell
 endfunction
 
 " ------------- C ----------------------------
 function FT_c()
-    " disable auto comment for c/cpp
+    " disable auto comment for C 
     setlocal comments-=:// comments+=f://
     set shiftwidth=4
     set tabstop=4
     " the textwidth is used for formatting the comments
     set textwidth=72
-    set colorcolumn=73
-    set autoindent          " always set autoindenting on
-    set cindent             " indent c code
+    set colorcolumn=72
+    set autoindent
+    set cindent
     set nospell
 endfunction
+" ------------- End C ----------------------------
 
+" ------------- C++ ----------------------------
 function FT_cpp()
-    " disable auto comment for c/cpp
+    " disable auto comment for cpp
     setlocal comments-=:// comments+=f://
     set shiftwidth=2
     set tabstop=2
     set textwidth=72
-    set colorcolumn=73
-    set autoindent          " always set autoindenting on
-    set cindent             " indent c code
+    set colorcolumn=72
+    set autoindent
+    set cindent
     set nospell
 endfunction
 
 " syntastic
 let g:syntastic_cpp_compiler_options = ' -std=c++11'
 "
-" ------------- End C/C++ ----------------------------
+" ------------- End C++ ----------------------------
 
 " ------------------ OCaml --------------------
 

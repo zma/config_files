@@ -115,8 +115,14 @@ let NERDTreeWinPos="right"
 nmap W :w<CR>
 nmap Q :q<CR> 
 
-nmap <C-h> :tabprevious<CR>
-nmap <C-l> :tabnext<CR>
+" cursor moving between windows
+nmap <C-h> :wincmd h<CR>
+nmap <C-l> :wincmd l<CR>
+
+" cursor moving between tabs
+" reuse C-p and C-n since moving up/down is usually k/j
+nmap <C-p> :tabprevious<CR>
+nmap <C-n> :tabnext<CR>
 
 " F2 in insert mode for paste toggle 
 set pastetoggle=<F2>

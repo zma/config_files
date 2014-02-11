@@ -6,7 +6,6 @@ set nocompatible
 filetype on
 filetype plugin on
 
-
 syntax on
 
 " pathogen
@@ -35,8 +34,8 @@ set expandtab
 set smarttab
 set softtabstop=4
 
-" set linebreak
 " set textwidth=72
+" set linebreak
 set wrap
 
 " do incremental searching
@@ -63,10 +62,10 @@ set number
 
 " status bar
 set laststatus=2
-set statusline=%<%([%{Tlist_Get_Tagname_By_Line()}]%)\ %t%=%c,%l/%L\ %P\ %F\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y
+set statusline=\ \ \ \ %<%([%{Tlist_Get_Tagname_By_Line()}]%)\ %t%=%c,%l/%L\ %P\ %F\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y
 
 " indent settings
-" turn this to on to make indent work
+" turn this on to make indent work
 filetype indent on
 
 " by default, turn it off
@@ -179,6 +178,7 @@ autocmd FileType sh call FT_sh()
 
 function FT_sh()
     set autoindent
+    set colorcolumn=80
     filetype indent on
     filetype plugin indent on
 endfunction

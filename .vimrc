@@ -80,6 +80,7 @@ let g:neocomplcache_enable_at_startup = 1
 
 " taglist: auto open
 let Tlist_Auto_Open = 1
+let Tlist_Show_Menu = 1
 " auto close Tlist window if it is the only window
 let Tlist_Exit_OnlyWindow = 1
 
@@ -96,8 +97,11 @@ let g:autotags_ctags_global_include = ""
 
 " setlocal spell spelllang=en
 
+" allow windows to be open in the background
+set hidden
+
 " ------------- LustyJuggler: no warning on vims without Ruby ---------
-let g:LustyJugglerSuppressRubyWarning = 1
+" let g:LustyJugglerSuppressRubyWarning = 1
 " ------------- End LustyJuggler: no warning on vims without Ruby ---------
 
 " syntastic
@@ -123,6 +127,7 @@ nmap <C-l> :wincmd l<CR>
 " reuse C-p and C-n since moving up/down is usually k/j
 nmap <C-p> :tabprevious<CR>
 nmap <C-n> :tabnext<CR>
+" prefer buffers instead of tabs using LustyJuggler
 
 " F2 in insert mode for paste toggle 
 set pastetoggle=<F2>
@@ -135,6 +140,7 @@ map <F3> :TlistToggle <CR>
 
 " lustyjuggler
 map <F4> :LustyJuggler <CR>
+nmap <C-b> :LustyJuggler <CR>
 
 " F5 for spell check with aspell
 map <F5> :w!<CR>:!aspell check %<CR>:e! %<CR>

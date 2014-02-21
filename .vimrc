@@ -125,9 +125,12 @@ nmap <C-l> :wincmd l<CR>
 
 " cursor moving between tabs
 " reuse C-p and C-n since moving up/down is usually k/j
-nmap <C-p> :tabprevious<CR>
-nmap <C-n> :tabnext<CR>
+" nmap <C-p> :tabprevious<CR>
+" nmap <C-n> :tabnext<CR>
 " prefer buffers instead of tabs using LustyJuggler
+" these 2 shortcuts used for syntastic
+nmap <C-p> :lprevious<CR>
+nmap <C-n> :lnext<CR>
 
 " F2 in insert mode for paste toggle 
 set pastetoggle=<F2>

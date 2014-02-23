@@ -62,7 +62,7 @@ set number
 
 " status bar
 set laststatus=2
-set statusline=\ \ \ \ %<%([%{Tlist_Get_Tagname_By_Line()}]%)\ %t%=%c,%l/%L\ %P\ %F\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y
+set statusline=%<%t\ %([%{Tlist_Get_Tagname_By_Line()}]%)%=%c,%l/%L\ %P\ %F\ [%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y
 
 " indent settings
 " turn this on to make indent work
@@ -129,8 +129,15 @@ nmap <C-l> :wincmd l<CR>
 " nmap <C-n> :tabnext<CR>
 " prefer buffers instead of tabs using LustyJuggler
 " these 2 shortcuts used for syntastic
-nmap <C-p> :lprevious<CR>
-nmap <C-n> :lnext<CR>
+" buffers
+nmap <C-n> :bnext<CR>
+nmap <C-p> :bprevious<CR>
+
+nmap <C-m> :b#<CR>
+nmap <C-b> :BufExplorerHorizontalSplit<CR>
+
+nmap gp :lprevious<CR>
+nmap gn :lnext<CR>
 
 " F2 in insert mode for paste toggle 
 set pastetoggle=<F2>
@@ -142,8 +149,8 @@ map <F2> :execute 'NERDTreeTabsToggle'<CR>
 map <F3> :TlistToggle <CR>
 
 " lustyjuggler
-map <F4> :LustyJuggler <CR>
-nmap <C-b> :LustyJuggler <CR>
+" map <F4> :LustyJuggler <CR>
+" nmap <C-b> :LustyJuggler <CR>
 
 " F5 for spell check with aspell
 map <F5> :w!<CR>:!aspell check %<CR>:e! %<CR>

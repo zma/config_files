@@ -360,7 +360,7 @@
 ; (gtk_accel_path "<Actions>/core-editor/style-h2" "<Primary>2")
 ; (gtk_accel_path "<Actions>/new-source/memo-list-new" "")
 ; (gtk_accel_path "<Actions>/shell/show-switcher" "")
-(gtk_accel_path "<Actions>/shell/contents" "F10")
+(gtk_accel_path "<Actions>/shell/contents" "<Primary>F1")
 ; (gtk_accel_path "<Actions>/composer/view-from-override" "")
 ; (gtk_accel_path "<Actions>/mail/mail-folder-move" "")
 ; (gtk_accel_path "<Actions>/calendar/event-new" "")

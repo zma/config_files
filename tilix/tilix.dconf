@@ -1,11 +1,17 @@
 [/]
+new-window-inherit-state=true
 quake-height-percent=90
+tab-position='top'
 quake-hide-lose-focus=true
+copy-on-select=false
 sidebar-on-right=false
-session-name='${terminalNumber}: ${title}'
+use-overlay-scrollbar=true
+use-tabs=true
+session-name='${title} '
+enable-wide-handle=false
 app-title='${activeTerminalTitle}'
 warn-vte-config-issue=false
-terminal-title-show-when-single=true
+terminal-title-show-when-single=false
 window-style='normal'
 
 [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
@@ -18,9 +24,10 @@ cursor-colors-set=false
 highlight-colors-set=false
 use-theme-colors=false
 bold-color-set=false
-font='Monospace 13'
+font='Monospace 14'
 terminal-title='${id}: ${title}'
 background-color='#263238'
+badge-text=''
 scrollback-lines=819200
 
 [keybindings]

@@ -1,21 +1,39 @@
 [/]
-warn-vte-config-issue=false
 quake-height-percent=90
 quake-hide-lose-focus=true
-
-[keybindings]
-win-switch-to-previous-session='<Primary>comma'
-win-switch-to-next-session='<Primary>period'
+sidebar-on-right=false
+session-name='${title}'
+app-title='${activeTerminalTitle}'
+warn-vte-config-issue=false
+terminal-title-show-when-single=true
+window-style='normal'
 
 [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
 foreground-color='#A1B0B8'
 visible-name='Default'
 palette=['#252525', '#FF5252', '#C3D82C', '#FFC135', '#42A5F5', '#D81B60', '#00ACC1', '#F5F5F5', '#708284', '#FF5252', '#C3D82C', '#FFC135', '#42A5F5', '#D81B60', '#00ACC1', '#F5F5F5']
 badge-color-set=false
+default-size-rows=80
 use-system-font=false
 cursor-colors-set=false
 highlight-colors-set=false
 use-theme-colors=false
 bold-color-set=false
 font='Monospace 14'
+terminal-title='${title}'
 background-color='#263238'
+scrollback-lines=819200
+
+[keybindings]
+win-switch-to-next-session='<Primary>period'
+win-switch-to-session-4='<Primary>4'
+win-switch-to-session-5='<Primary>5'
+win-switch-to-previous-session='<Primary>comma'
+win-switch-to-session-6='<Primary>6'
+win-switch-to-session-7='<Primary>7'
+win-switch-to-session-3='<Primary>3'
+win-switch-to-session-9='<Primary>9'
+win-switch-to-session-8='<Primary>8'
+win-switch-to-session-0='disabled'
+win-switch-to-session-1='<Primary>1'
+win-switch-to-session-2='<Primary>2'

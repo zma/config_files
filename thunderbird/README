@@ -1,0 +1,1 @@
+Copy common/* to the profile directory for your Thunderbird and these configurations will take effect after Thunderbird restarts.

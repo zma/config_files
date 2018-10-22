@@ -1,4 +1,5 @@
-<div style="font-size: small;">Thanks,<br />
+<div style="font-size: small;">%cursor%
+Thanks,<br />
 Eric Ma<br />
 <br />
 </div>

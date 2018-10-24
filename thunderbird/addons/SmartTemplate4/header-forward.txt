@@ -1,0 +1,10 @@
+<div style=" font-size: 12pt;">
+-------- Forwarded Message --------<br />
+<b>From:</b> %from(name,bracketMail(angle))%<br />
+<b>Sent:</b> %X:=sent% %A%, %B% %d%, %Y% %l%:%M%%p(3)%<br />
+<b>To:</b> %to(name,bracketMail(angle))%<br />
+[[<b>Cc:</b> %cc(name,bracketMail(angle))%<br />]]
+<b>Subject:</b> %subject%<br />
+<br />
+</div>
+

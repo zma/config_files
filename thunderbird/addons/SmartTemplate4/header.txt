@@ -1,4 +1,4 @@
-<div style="border-top:1px solid #e1e1e1;padding-top: 6px; margin-top: 10px; font-size: small;">
+<div style="border-top:1px solid #e1e1e1;padding-top: 6px; margin-top: 10px; font-size: 12pt;">
 <b>From:</b> %from(name,bracketMail(angle))%<br />
 <b>Sent:</b> %X:=sent% %A%, %B% %d%, %Y% %l%:%M%%p(3)%<br />
 <b>To:</b> %to(name,bracketMail(angle))%<br />

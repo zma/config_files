@@ -1,4 +1,4 @@
-<div style=" font-size: 12pt;">
+<div style=" font-size: 11pt;">
 -------- Forwarded Message --------<br />
 <b>From:</b> %from(name,bracketMail(angle))%<br />
 <b>Sent:</b> %X:=sent% %A%, %B% %d%, %Y% %l%:%M%%p(3)%<br />

@@ -1,9 +1,8 @@
 <div style="font-size: 11pt;">%cursor%
 <br />
-<br />
 Best regards,<br />
 <br />
-<b>Eric Ma</b><br />
+Eric Ma<br />
 <br />
 </div>
 

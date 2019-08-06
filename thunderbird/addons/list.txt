@@ -1,4 +1,5 @@
 gContactSync
 ReFwdFormatter
-SmartTemplate4
-Copy Folder
+ReplyWithHeader
+Remove Duplicate Messages (Alternate)
+# SmartTemplate4

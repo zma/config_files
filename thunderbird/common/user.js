@@ -9,4 +9,5 @@ user_pref("mailnews.default_sort_order", 2);
 user_pref("mail.compose.default_to_paragraph", false);
 /* show full name and email */
 user_pref("mail.showCondensedAddresses", false);
-
+/* suppress signature double dash separator */
+user_prof("mail.identity.default.suppress_signature_separator", true);

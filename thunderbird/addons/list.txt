@@ -1,5 +1,3 @@
-gContactSync
 ReFwdFormatter
 ReplyWithHeader
 Remove Duplicate Messages (Alternate)
-# SmartTemplate4

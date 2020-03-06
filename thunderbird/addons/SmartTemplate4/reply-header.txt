@@ -1,6 +1,0 @@
-<div style="border-top:1px solid #e1e1e1;padding-top: 6px; margin-top: 12px; margin-bottom:12px; font-size: 11pt;">
-<b>From:</b> %from(name,bracketMail(angle))%<br />
-<b>Sent:</b> %X:=sent% %A%, %B% %d%, %Y% %l%:%M%%p(3)%<br />
-<b>To:</b> %to(name,bracketMail(angle))%<br />
-[[<b>Cc:</b> %cc(name,bracketMail(angle))%<br />]]
-<b>Subject:</b> %subject%<br /></div>

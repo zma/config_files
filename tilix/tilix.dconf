@@ -1,6 +1,7 @@
 [/]
 new-window-inherit-state=true
 quake-height-percent=90
+prompt-on-close=true
 tab-position='top'
 quake-hide-lose-focus=true
 copy-on-select=false
@@ -15,9 +16,9 @@ terminal-title-show-when-single=false
 window-style='normal'
 
 [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
-foreground-color='#A1B0B8'
+foreground-color='#F8F8F2'
 visible-name='Default'
-palette=['#252525', '#FF5252', '#C3D82C', '#FFC135', '#42A5F5', '#D81B60', '#00ACC1', '#F5F5F5', '#708284', '#FF5252', '#C3D82C', '#FFC135', '#42A5F5', '#D81B60', '#00ACC1', '#F5F5F5']
+palette=['#272822', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#A1EFE4', '#F8F8F2', '#75715E', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#A1EFE4', '#F9F8F5']
 badge-color-set=false
 use-system-font=false
 cursor-colors-set=false
@@ -26,7 +27,7 @@ use-theme-colors=false
 bold-color-set=false
 font='Monospace 14'
 terminal-title='${id}: ${title}'
-background-color='#263238'
+background-color='#2E2E34343636'
 badge-text=''
 scrollback-lines=819200
 

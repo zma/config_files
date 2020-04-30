@@ -1,0 +1,40 @@
+[global_config]
+  borderless = True
+  enabled_plugins = ActivityWatch, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  scroll_tabbar = True
+  window_state = maximise
+[keybindings]
+  go_next = <Alt>bracketright
+  go_prev = <Alt>bracketleft
+  new_tab = <Alt>t
+  next_tab = <Primary>period
+  prev_tab = <Primary>comma
+  split_horiz = <Shift><Alt>d
+  split_vert = <Alt>d
+  switch_to_tab_1 = <Alt>1
+  switch_to_tab_2 = <Alt>2
+  switch_to_tab_3 = <Alt>3
+  switch_to_tab_4 = <Alt>4
+  switch_to_tab_5 = <Alt>5
+  switch_to_tab_6 = <Alt>6
+  switch_to_tab_7 = <Alt>7
+  switch_to_tab_8 = <Alt>8
+  switch_to_tab_9 = <Alt>9
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#2e3436"
+    cursor_color = "#aaaaaa"
+    foreground_color = "#f3f3f3"
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    scrollback_lines = 500000
+    scrollbar_position = hidden
+    show_titlebar = False

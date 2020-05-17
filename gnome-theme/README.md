@@ -16,3 +16,6 @@ Put it into `~/.local/share/icons`.
 
 DMZ black
 
+## Preview
+
+![preview](./gnome-3-theme.png)

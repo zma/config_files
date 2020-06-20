@@ -1,15 +1,15 @@
 [global_config]
-  enabled_plugins = ActivityWatch, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
-  scroll_tabbar = True
   window_state = maximise
+  scroll_tabbar = True
+  enabled_plugins = ActivityWatch, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
 [keybindings]
+  new_tab = <Primary>t
   go_next = <Alt>bracketright
   go_prev = <Alt>bracketleft
-  new_tab = <Alt>t
-  next_tab = <Primary>period
-  prev_tab = <Primary>comma
   split_horiz = <Shift><Alt>d
   split_vert = <Alt>d
+  next_tab = <Primary>period
+  prev_tab = <Primary>comma
   switch_to_tab_1 = <Alt>1
   switch_to_tab_2 = <Alt>2
   switch_to_tab_3 = <Alt>3
@@ -19,6 +19,15 @@
   switch_to_tab_7 = <Alt>7
   switch_to_tab_8 = <Alt>8
   switch_to_tab_9 = <Alt>9
+[profiles]
+  [[default]]
+    background_color = "#2e3436"
+    cursor_color = "#aaaaaa"
+    foreground_color = "#f3f3f3"
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_lines = 500000
+    palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
 [layouts]
   [[default]]
     [[[child1]]]
@@ -29,12 +38,3 @@
       parent = ""
       type = Window
 [plugins]
-[profiles]
-  [[default]]
-    background_color = "#2e3436"
-    cursor_color = "#aaaaaa"
-    foreground_color = "#f3f3f3"
-    palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
-    scrollback_lines = 500000
-    scrollbar_position = hidden
-    show_titlebar = False
